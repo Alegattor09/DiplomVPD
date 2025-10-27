@@ -1,0 +1,41 @@
+---
+- name: Установка Nginx
+  hosts: web
+  become: true
+
+  tasks:
+
+    # - name: update apt packages # Обновление пакетов
+    #   apt:
+    #     force_apt_get: true
+    #     upgrade: dist
+    #     update_cache: yes
+      
+    # - name: Установка Nginx
+    #   apt:
+    #     name: nginx
+    #     state: latest
+    #     update_cache: yes
+    
+    # - name: Запуск Nginx
+    #   service:
+    #     name: nginx
+    #     state: started
+    #     enabled: yes
+    
+    - name: Создание HTML-страницы
+      copy:
+        content: "<html><head><title>Netology diplom VyaznikovPD</title></head><body><h1>Netology diplom VyaznikovPD</h1></body></html>"
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+
+      notify:
+        - Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+

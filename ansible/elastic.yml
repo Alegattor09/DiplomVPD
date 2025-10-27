@@ -1,0 +1,39 @@
+---
+- name: Установка Elastic
+  hosts: elastic_srv
+  become: yes
+  gather_facts: true
+
+  tasks:
+    - name: Установка зависимостей
+      apt:
+        name:
+          - wget
+          - curl
+        state: present
+        update_cache: yes
+
+    - name: Загрузка elasticsearch с репозитория
+      shell: wget https://mirror.yandex.ru/mirrors/elastic/7/pool/main/e/elasticsearch/elasticsearch-7.17.15-amd64.deb
+      args:
+        chdir: /tmp
+
+    - name: Установка elasticsearch
+      shell: dpkg -i elasticsearch-7.17.15-amd64.deb
+      args:
+        chdir: /tmp
+
+    - name: Копируем конфиг файл elasticsearch
+      copy:
+        src: ./templates/elastic_conf.yml
+        dest: /etc/elasticsearch/elasticsearch.yml
+
+    - name: daemon_reload
+      systemd:
+        daemon_reload: true
+
+    - name: Перезапускаем elasticsearch и добавляем в автозагрузку
+      service:
+        name: elasticsearch
+        state: restarted
+        enabled: yes

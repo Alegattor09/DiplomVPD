@@ -1,0 +1,61 @@
+---
+- name: Установка Zabbix Agent на группу серверов web
+  hosts: web-1
+  become: true
+  vars:
+    zabbix_server: 10.4.4.5
+    hostname: web-1
+  tasks:
+
+    - name: Ensure UFW is installed
+      package:
+        name: ufw
+        state: present
+
+    - name: Allow port 10050 from Zabbix server
+      ufw:
+        rule: allow
+        port: "10050"
+        proto: tcp
+        src: "10.4.4.5"  # Только с Zabbix сервера
+
+    - name: Enable UFW
+      ufw:
+        state: enabled
+        
+    - name: Загрузка Zabbix с репозитория
+      shell: wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian12_all.deb
+      args:
+        chdir: /tmp
+
+    - name: Установка Zabbix
+      shell: dpkg -i zabbix-release_latest_6.0+debian12_all.deb
+      args:
+        chdir: /tmp
+
+    - name: Установка необходимых пакетов
+      apt:
+        name: zabbix-agent
+        state: present
+
+    - name: Создание директории для логов Zabbix Agent
+      command: mkdir -p /var/log/zabbix/
+      become_user: root
+
+
+    - name: Установка прав на директорию логов Zabbix Agent
+      command: chown zabbix /var/log/zabbix/
+      become_user: root
+
+    - name: Копирование конфигурационного файла Zabbix Agent
+      template:
+        src: ./templates/zabbix_agentd.conf.j2
+        dest: /etc/zabbix/zabbix_agentd.conf
+      notify: restart zabbix-agent
+
+
+  handlers:
+    - name: restart zabbix-agent
+      service:
+        name: zabbix-agent
+        state: restarted
