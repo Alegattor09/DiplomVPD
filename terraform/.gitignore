@@ -4,6 +4,7 @@
 
 !.terraform
 
+*/.tfstate
 *.tfstate
 *.tfstate.*
 
