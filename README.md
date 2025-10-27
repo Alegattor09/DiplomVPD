@@ -193,24 +193,16 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Теперь настроим балансировщик:
 
-1. Создайте [Target Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/target-group), включите в неё две созданных ВМ.
-
-Создание таргет группы и включим наши два вебсервера
+1. Создание таргет группы и включим наши два вебсервера
 ![Target Group](Target_Group.png)
 
-2. Создайте [Backend Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/backend-group), настройте backends на target group, ранее созданную. Настройте healthcheck на корень (/) и порт 80, протокол HTTP.
-
-Создание бэкэнд и настройка на таргет группу
+2. Создание бэкэнд и настройка на таргет группу
 ![backendgp](back_end_gp.png)
 
-3. Создайте [HTTP router](https://cloud.yandex.com/docs/application-load-balancer/concepts/http-router). Путь укажите — /, backend group — созданную ранее.
+3. Создаём http-router и указываем — /, backend group
+![http-router.png](http-router.png)
 
-Создаём http-router и указываем — /, backend group
-![http-router.png](http-router.png.png)
-
-4. Создайте [Application load balancer](https://cloud.yandex.com/en/docs/application-load-balancer/) для распределения трафика на веб-сервера, созданные ранее. Укажите HTTP router, созданный ранее, задайте listener тип auto, порт 80.
-
-Создание Load Balancer для распределения трафика медлу веб-серверами.
+4.Создание Load Balancer для распределения трафика медлу веб-серверами.
 ![load-balancer](load-balancer.png)
 
 Проверка работы изменение backend ip web-server
