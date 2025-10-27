@@ -235,5 +235,15 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 Конфиг filebeat на отправку access.log, error.log nginx в Elasticsearch.
 ![cfg_fb](cfg_fb.png)
 
+Установка filebeat on web group servers
+![inst_fb](inst_fb.png)
+
+![sctlfilebeatweb1-1](sctlfilebeatweb1-1.PNG)
+
+![sctlfilebeatweb1](sctlfilebeatweb1.PNG)
+ 
+ Аналогично на web-2
+
+
 ---
 
