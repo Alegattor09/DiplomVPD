@@ -154,7 +154,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ![vpc_sg](vpc_sg.PNG)
 
 Карта облачной сети
-![Map_cloudnet](Map_cloudnet.pngpng)
+![Map_cloudnet](Map_cloudnet.png)
 
 Сервера Zabbix, Kibana, application load balancer находятся в публичной сети
 ![vpc_pubnetsg](vpc_pubnetsg.png)
