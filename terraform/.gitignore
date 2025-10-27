@@ -4,7 +4,7 @@
 
 !.terraform
 
-../*.tfstate
+../ansible/*.tfstate
 *.tfstate
 *.tfstate.*
 
