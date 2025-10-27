@@ -227,7 +227,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ![dashbord](dashbord.png)
 
 
-## Логи
+## Логи ELK
 
 Установка Elasticsearch
 ![elastic](elastic.png)
@@ -244,6 +244,16 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
  
  Аналогично на web-2
 
+Установка Kibana и проброс конфиг файла
+![kibana](kibana.png)
+
+
+Просмотр лога kibana
+![log_kibana](log_kibana.png)
+
+
+Проверяем что в Kibana доходят логи от filebeat в elasticsearch
+![toelk](toelk.png)
 
 ---
 
