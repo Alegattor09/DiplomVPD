@@ -205,9 +205,35 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 4.Создание Load Balancer для распределения трафика медлу веб-серверами.
 ![load-balancer](load-balancer.png)
 
+Тестирование сайта
+![test_web](test_web.png)
+
 Проверка работы изменение backend ip web-server
 ![test lb](test_lb.png)
 
+## Мониторинг
 
+Сперва устанавливаем zabbix server и zabbix agent
+
+![zabbix server](Zabbix-srv.PNG)
+
+![zabbixagent1](zabbixagent1.PNG)
+
+Добавляем хостов в configuration hosts
+![addhost](addhost_zabbix.png)
+
+
+Создание дашборда для мониторинга показателей вебсерверов
+![dashbord](dashbord.png)
+
+
+## Логи
+
+Установка Elasticsearch
+![elastic](elastic.png)
+
+Конфиг filebeat на отправку access.log, error.log nginx в Elasticsearch.
+![cfg_fb](cfg_fb.png)
 
 ---
+
