@@ -263,3 +263,4 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ![snapsh](snapsh.png)
 
 Проверяем создание снимков по расписанию
+![snap_ready](snap_ready.png)
