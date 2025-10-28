@@ -172,7 +172,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 Сервера Zabbix, Kibana, application load balancer находятся в публичной сети
 ![vpc_pubnetsg](vpc_pubnetsg.png)
 
-![load-balancer](load_balancer.png)
+![load-balancer](load-balancer.png)
 ---
 ### Работа с terraform и ansible
 
@@ -270,4 +270,5 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ![snapsh](snapsh.png)
 
 Проверяем создание снимков по расписанию
+
 ![snap_ready](snap_ready.png)
