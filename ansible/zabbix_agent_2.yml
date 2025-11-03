@@ -46,6 +46,24 @@
       command: chown zabbix /var/log/zabbix/
       become_user: root
 
+    - name: Копирование и настройка скрипта мониторинга
+      template:
+        src: ./templates/zabbix_use_metrics.sh
+        dest: /usr/local/bin/zabbix_use_metrics.sh
+        owner: zabbix
+        group: zabbix
+        mode: '0755'
+      become: yes
+
+    - name: Копирование и настройка скрипта мониторинга
+      template:
+        src: ./templates/zabbix_network_metrics.sh
+        dest: /usr/local/bin/zabbix_network_metrics.sh
+        owner: zabbix
+        group: zabbix
+        mode: '0755'
+      become: yes
+
     - name: Копирование конфигурационного файла Zabbix Agent
       template:
         src: ./templates/zabbix_agentd.conf.j2

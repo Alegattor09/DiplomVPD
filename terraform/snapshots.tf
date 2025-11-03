@@ -6,7 +6,7 @@ resource "yandex_compute_snapshot_schedule" "vm_snap_sch1" {
   description    = "Ежедневные снимки, хранятся 7 дней"
  
     schedule_policy {
-    expression = "10 1 * * *" # *минуты *часы *день месяца *месяц *день недели
+    expression = "* 1 * * *" # *минуты *часы *день месяца *месяц *день недели
   }
 
   retention_period = "168h"

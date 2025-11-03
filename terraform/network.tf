@@ -116,7 +116,6 @@ resource "yandex_alb_virtual_host" "root" {
   }
 }
 
-
 #___________________________________________________L7 balancer
 resource "yandex_alb_load_balancer" "l7b" {
   name               = "new-load-balancer"

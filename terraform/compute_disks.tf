@@ -26,7 +26,6 @@ resource "yandex_compute_disk" "disk-web-2" {
   
 }
 
-
 resource "yandex_compute_disk" "disk-zabbix" {
   name     = "disk-vm-zabbix"
   type     = "network-hdd"

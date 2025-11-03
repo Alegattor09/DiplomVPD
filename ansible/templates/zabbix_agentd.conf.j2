@@ -1,3 +1,6 @@
 Server={{zabbix_server}}
 ServerActive={{zabbix_server}}
 LogFile=/var/log/zabbix/zabbix_agentd.log
+
+UserParameter=use.metric[*],/usr/local/bin/zabbix_use_metrics.sh $1 $2
+UserParameter=network.metric[*],/usr/local/bin/zabbix_network_metrics.sh $1 $2 $3

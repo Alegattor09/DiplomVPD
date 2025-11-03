@@ -150,6 +150,43 @@ resource "yandex_compute_instance" "zabbix" {
   }
 }
 
+#prometheus & grafana
+# resource "yandex_compute_instance" "prograf" {
+#   name                      = "vm-prograf"
+#   hostname                  = "prograf"
+#   zone                      = "ru-central1-b"
+#   allow_stopping_for_update = true
+#   platform_id               = "standard-v3"
+
+#   resources {
+#     cores  = 2
+#     memory = 2
+#     core_fraction = 20
+#   }
+
+#   boot_disk {
+#     disk_id     = "${yandex_compute_disk.disk-prograf.id}"
+#     }
+
+#   network_interface {
+#     subnet_id          = yandex_vpc_subnet.public.id
+# 	dns_record {
+#       fqdn = "prograf.srv."
+#     ttl = 300
+#     }
+#     security_group_ids = [yandex_vpc_security_group.internal.id, yandex_vpc_security_group.public-prograf.id]
+#     ip_address         = "10.4.4.5"
+#   }
+
+#   metadata = {
+#     user-data = "${file("./cloud-init.yml")}"
+#   }
+
+#   scheduling_policy {  
+#     preemptible = true
+#   }
+# }
+
 
 # elastic
 resource "yandex_compute_instance" "elastic" {
@@ -239,10 +276,11 @@ resource "local_file" "inventory" {
 
   [monitoring]
   zabbix_srv ansible_host=${yandex_compute_instance.zabbix.fqdn}
-
+  
   [log]
   elastic_srv ansible_host=${yandex_compute_instance.elastic.fqdn}
   kibana_srv  ansible_host=${yandex_compute_instance.kibana.fqdn}
+
   XYZ
   
   filename = "../ansible/hosts.ini"
@@ -250,3 +288,5 @@ resource "local_file" "inventory" {
 
   
   # ansible_become_pass= "{{ become_password }}"
+      # prograf ansible_host=${yandex_compute_instance.prograf.fqdn}
+

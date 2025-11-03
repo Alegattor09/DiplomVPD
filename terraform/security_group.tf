@@ -51,6 +51,7 @@ resource "yandex_vpc_security_group" "internal" {
 
 }
 
+
 resource "yandex_vpc_security_group" "public-bastion" {
   name       = "public-bastion-rules"
   network_id = yandex_vpc_network.dipnet.id
@@ -116,6 +117,7 @@ resource "yandex_vpc_security_group" "public-zabbix" {
   }
 }
 
+
 resource "yandex_vpc_security_group" "public-kibana" {
   name       = "public-kibana-rules"
   network_id = yandex_vpc_network.dipnet.id
@@ -139,6 +141,7 @@ resource "yandex_vpc_security_group" "public-kibana" {
     v4_cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 
 resource "yandex_vpc_security_group" "public-load-balancer" {
   name       = "public-load-balancer-rules"
