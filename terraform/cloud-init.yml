@@ -4,9 +4,6 @@ users:
     groups: sudo
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']  
-    passwd: "$6$Brlx133e1Bt2LfZs$kbaPRKY5WAAVwSF31bF8Cs//2nvNRU6TKsfnb1JfPJPeJI7eAJJhxORegLpIW2uuDClmKixBe9ANe/qbRWH/H1"
     lock_passwd: false
     ssh_authorized-keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFzi/LGm8jWDZItWfezOwaSmWdI/UTd6kGpEd6JZFobI
-
-ssh_pwauth: true

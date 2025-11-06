@@ -225,10 +225,15 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ![zabbix server](Zabbix-srv.PNG)
 
+
 ![zabbixagent1](zabbixagent1.PNG)
 
 Добавляем хостов в configuration hosts
 ![addhost](addhost_zabbix.png)
+
+
+Была добавлена переменна для БД zabbix используя ansible-vault
+![pass_zabbixdb](pass_zabbixdb.png)
 
 
 Создание дашборда для мониторинга показателей вебсерверов
